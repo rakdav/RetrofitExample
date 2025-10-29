@@ -96,10 +96,10 @@ fun PokemonListScreen(
             else
             {
                 LazyColumn {
-                    pokemonList.value?.let { result->
-                        items(result.results.size){
+                    pokemonList.value?.let { results->
+                        items(results.results.size){
                             index->
-                            val name=result.results[index].name
+                            val name=results.results[index].name
                             PokemonCell(modifier = Modifier.clickable{
                                 navController.navigate("details/$name")},
                                 index="$index",

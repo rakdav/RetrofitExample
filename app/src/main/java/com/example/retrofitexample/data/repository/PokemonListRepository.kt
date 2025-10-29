@@ -17,7 +17,7 @@ class PokemonListRepository(
         offset: Int,
         limit: Int
     ): Response<PokemonListModel> {
-        Log.d("Repository getPokemonlist","$offset,$limit")
+        Log.d("Repository getPokemon list","$offset,$limit")
         return apiService.getPokemonList(offset=offset,limit=limit)
     }
 }
