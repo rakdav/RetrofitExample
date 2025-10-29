@@ -4,11 +4,16 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -87,7 +92,40 @@ fun PokemonListScreen(
                     )
                 }
             }
+            else
+            {
+                LazyColumn {
+                    pokemonList.value?.let { result->
+                        items(result.results.size){
+                            index->
+                            val name=result.results[index].name
+                        }
+                    }
+                }
+            }
         }
     }
+}
 
+@Composable
+private fun PokemonCell(
+    modifier: Modifier = Modifier,
+    index: String,
+    name: String
+) {
+    Column(modifier = modifier
+        .fillMaxWidth()
+        .height(64.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.Start) {
+        Row(
+            modifier = Modifier.padding(start = 20.dp),
+            horizontalArrangement = Arrangement.Start,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(text = index, fontSize = 20.sp)
+            Text(text = name, fontSize = 20.sp, modifier = Modifier.padding(start = 16.dp))
+        }
+        Divider(color = Color.Gray, modifier = Modifier.padding(top = 20.dp))
+    }
 }
