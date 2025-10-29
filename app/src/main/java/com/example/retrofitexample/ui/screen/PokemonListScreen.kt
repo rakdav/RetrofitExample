@@ -1,6 +1,7 @@
 package com.example.retrofitexample.ui.screen
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -99,6 +100,11 @@ fun PokemonListScreen(
                         items(result.results.size){
                             index->
                             val name=result.results[index].name
+                            PokemonCell(modifier = Modifier.clickable{
+                                navController.navigate("details/$name")},
+                                index="$index",
+                                name=name
+                            )
                         }
                     }
                 }
