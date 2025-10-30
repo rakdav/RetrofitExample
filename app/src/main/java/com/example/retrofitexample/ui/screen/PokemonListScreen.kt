@@ -102,7 +102,7 @@ fun PokemonListScreen(
                             val name=results.results[index].name
                             PokemonCell(modifier = Modifier.clickable{
                                 navController.navigate("details/$name")},
-                                index="$index",
+                                index="${index+1}",
                                 name=name
                             )
                         }
