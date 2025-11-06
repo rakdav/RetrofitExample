@@ -19,6 +19,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.retrofitexample.ui.screen.PokemonDetailsScreen
 import com.example.retrofitexample.ui.screen.PokemonListScreen
 import com.example.retrofitexample.ui.theme.RetrofitExampleTheme
 
@@ -47,8 +48,8 @@ fun PokeAPIApp(navController: NavHostController = rememberNavController()) {
                 )
             }
         ) { backStackEntry ->
-         //   backStackEntry.arguments?.getString("id")
-          //      ?.let { PokemonDetailsScreen(navController = navController, name = it) }
+            backStackEntry.arguments?.getString("id")
+                ?.let { PokemonDetailsScreen(navController = navController, name = it) }
         }
     }
 }
