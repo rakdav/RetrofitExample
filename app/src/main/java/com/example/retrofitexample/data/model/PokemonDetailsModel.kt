@@ -6,7 +6,8 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class PokemonDetailsModel(
-    val abilities: List<Abilities>
+    val abilities: List<Abilities>,
+    @SerializedName("sprites") val sprites: Sprites,
 ):Parcelable
 @Parcelize
 data class Abilities(
@@ -19,4 +20,9 @@ data class Abilities(
 data class Ability(
     @SerializedName("name") val name: String,
     @SerializedName("url") val url: String,
+): Parcelable
+
+@Parcelize
+data class Sprites(
+    @SerializedName("back_default") val back_default: String
 ): Parcelable

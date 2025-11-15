@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import coil.compose.AsyncImage
 import com.example.retrofitexample.viewmodel.PokemonDetailViewModel
 import com.example.retrofitexample.viewmodel.PokemonListViewModel
 
@@ -71,6 +72,9 @@ import com.example.retrofitexample.viewmodel.PokemonListViewModel
                     }
                 }
                 else {
+                    AsyncImage(model = pokemonDetail.value?.sprites?.back_default, contentDescription = "Pokemon",
+                        modifier = Modifier.size(width = 200.dp,
+                            200.dp))
                     LazyColumn {
                         pokemonDetail.value?.let { results->
                             items(results.abilities.size){
